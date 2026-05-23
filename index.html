@@ -3,65 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳动红心</title>
+    <title>超大居中跳动爱心</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{
-            width: 100vw;
+            width: 100vh;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #fff;
+            background: #ffffff;
         }
-        .wrap{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        button{
-            padding: 15px 35px;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            background: #e62424;
+        #clickBtn{
+            padding: 16px 40px;
+            font-size: 22px;
+            background: red;
             color: #fff;
+            border: none;
+            border-radius: 12px;
             cursor: pointer;
+            z-index: 10;
         }
         .heart{
-            position: absolute;
-            font-size: 60px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            font-size: 300px;
             color: red;
-            animation: beat 0.5s infinite alternate;
+            transform: translate(-50%,-50%);
+            animation: beat 0.4s infinite alternate;
         }
         @keyframes beat{
-            from{transform: scale(1);}
-            to{transform: scale(1.4);}
+            0%{transform: translate(-50%,-50%) scale(1);}
+            100%{transform: translate(-50%,-50%) scale(1.2);}
         }
     </style>
 </head>
 <body>
-    <div class="wrap">
+    <div>
         <h1>你是个笨蛋嘛！！！</h1>
         <h1>你是个笨蛋嘛！！！</h1>
         <h1>你是个笨蛋嘛！！！</h1>
-        <button id="btn">点击</button>
+        <button id="clickBtn">点击</button>
     </div>
 
     <script>
-        const btn = document.getElementById('btn');
-        btn.onclick = function(){
-            let heart = document.createElement('div');
+        const btn = document.getElementById('clickBtn');
+        btn.addEventListener('click',()=>{
+            const heart = document.createElement('div');
             heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = '50%';
-            heart.style.top = '50%';
-            heart.style.transform = 'translate(-50%,-50%)';
+            heart.textContent = '❤️';
             document.body.appendChild(heart);
-        }
+        })
     </script>
 </body>
 </html>
